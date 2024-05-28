@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.views import View
 
-def Home(request):
-    return render(request, 'netflix_app/index.html')
+class Home(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'index.html')
+    
