@@ -4,7 +4,7 @@ import imp
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from .forms import ProfileForm
-from .models import Profile
+from .models import Profile, Movie
 
 
 class Home(View):
@@ -48,3 +48,19 @@ class ProfileCreate(View):
         
         return render(request, 'profilecreate.html', context)
     
+    
+method_decorator(login_required, name= 'dispatch')
+class MovieList(View):
+    def get(self, request, profile_id, *args, **kwargs):
+        try:
+            profile = Profile.objects.get(uuid = profile_id)
+            movies = Movie.objects.filter(age_limit = profile.age_limit)
+            if profile not in request.user.profiles.all():
+                return redirect('netflix_app:profile-list')
+            context = {
+            'movies' : movies
+            }
+            return render(request, 'movielist.html', context)
+        
+        except Profile.DoesNotExist:
+            return redirect('netflix_app:profile-list')
