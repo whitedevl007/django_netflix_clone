@@ -1,7 +1,7 @@
 # Django Netflix Clone
 This is a clone of the popular video streaming site Netflix. Built using Django and uses the requests library to handle data from TMDB API.
 
-!(Screenshot.PNG)
+![](Screenshot.PNG)
 
 ## Requirements
 The user can perform the following functions:
