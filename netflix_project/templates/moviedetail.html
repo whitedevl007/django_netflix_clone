@@ -14,12 +14,12 @@
                 </p>
                 <div class="flex my-4">
 
-                    <button class="flex items-center bg-white py-2 px-5 rounded-md">
+                    <a href="{% url 'netflix_app:play-movie' movie_id=movie.uuid %}"class="flex items-center bg-red py-2 px-5 rounded-md">
                         <ion-icon name="play" class="text-2xl"></ion-icon>
-                        <span class="ml-3 font-medium">
+                        <span class="ml-3 font-medium"> 
                             Play
                         </span>
-                    </button>
+                    </a>
     
                     
                 </div>
